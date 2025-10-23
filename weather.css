@@ -1,0 +1,94 @@
+html, body{
+    height: 100%;
+    margin: 0;
+}
+body{
+    font-family: 'Segoe UI', sans-serif;
+    color: rgb(51, 51, 51); 
+    background: linear-gradient(rgb(56,34,133) 0%, rgb(43,50,122) 0%, rgb(0,2,4) 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    display: flex;
+    max-width: 900px; 
+    margin: 20px; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(rgb(22, 19, 56), rgb(0,2,4)); 
+    border-radius: 10px;
+    overflow: hidden;
+}
+.weatherCard{
+    flex: 1 1 300px;
+    color: white; 
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 360px;
+
+}
+.weatherCard h2{
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.weatherToday{
+    text-align: center;
+}
+#date{
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+#weatherIcon{
+    width: 100px;
+    margin: 10px 0;
+}
+#temperature{
+    font-size: 48px;
+    margin: 10px 0;
+}  
+#description{
+    font-size: 18px;
+}
+.weatherDetails{
+    flex: 1 1 300px;
+    padding: 30px;
+    background: white;
+}
+.searchBar{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}  
+#locationInput{
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+#searchButton{
+    padding: 10px 20px;
+    background: rgb(24, 8, 80); 
+    color: white; 
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.info p{
+    margin: 8px 0;
+    font-size: 16px;
+}
+.forecast h3{
+    margin-top: 20px;
+    font-size: 18px;
+}
+#forecast-list{
+    list-style: none;
+    padding: 0;
+}  
+#forecast-list li{
+    margin: 6px 0;
+    font-size: 16px;
+}
