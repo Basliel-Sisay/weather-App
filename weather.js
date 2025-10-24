@@ -11,7 +11,7 @@ function getOutcome(outcome){
         return ;
     }
     else{
-        return{
+        return{ 
             Date:outcome.days[0].datetime,
             temprature:outcome.days[0].temp,
             feelsLike:outcome.days[0].feelslike,
