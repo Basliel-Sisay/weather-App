@@ -20,3 +20,26 @@ CSS3 - Flexbox, gradients, and modern styling<br>
 JavaScript (ES6+) - Async/await, DOM manipulation, API integration<br>
 
 Visual Crossing Weather API - Reliable and accurate weather data<br>
+<h2>📁 Project Structure</h2>
+<pre>
+  weather-app/
+├── index.html          # Main application file
+├── weather.css         # Comprehensive styling
+├── weather.js          # Core functionality
+└── README.md           # Project documentation
+</pre>
+<h2>🔌 API Integration</h2>
+This application integrates with the Visual Crossing Weather API to provide:
+
+⚡ Real-time weather data fetching<br>
+
+🛡️ Comprehensive error handling<br>
+
+🔄 Efficient data processing and parsing<br>
+
+📊 Multiple weather parameters extraction<br>
+
+<h2>🚀 Getting Started</h2>
+<h3>Prerequisites</h3>
+A modern web browser<br>
+Internet connection for API calls
