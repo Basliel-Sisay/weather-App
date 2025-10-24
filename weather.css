@@ -34,24 +34,6 @@ body{
     font-size: 24px;
     margin-bottom: 10px;
 }
-.weatherToday{
-    text-align: center;
-}
-#date{
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-#weatherIcon{
-    width: 100px;
-    margin: 10px 0;
-}
-#temperature{
-    font-size: 48px;
-    margin: 10px 0;
-}  
-#description{
-    font-size: 18px;
-}
 .weatherDetails{
     flex: 1 1 300px;
     padding: 30px;
@@ -74,12 +56,8 @@ body{
     color: white; 
     border: none;
     cursor: pointer;
-    border-radius: 4px;
-}
-.info p{
-    margin: 8px 0;
-    font-size: 16px;
-}
+    border-radius: 10px;
+} 
 .forecast h3{
     margin-top: 20px;
     font-size: 18px;
