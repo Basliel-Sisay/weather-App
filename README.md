@@ -43,3 +43,12 @@ This application integrates with the Visual Crossing Weather API to provide:
 <h3>Prerequisites</h3>
 A modern web browser<br>
 Internet connection for API calls
+
+<h2>Installation</h2>
+1. Clone the repository:
+<pre>git clone https://github.com/Basliel-Sisay/weather-App.git
+</pre>
+2. Navigate to the project directory:
+<pre>cd weather-app</pre>
+3. Open index.html in your preferred browser
+
