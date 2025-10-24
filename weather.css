@@ -70,3 +70,29 @@ body{
     margin: 6px 0;
     font-size: 16px;
 }
+.weather-label{
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+}
+.weather-value{
+    color: rgb(220, 220, 220);
+    margin-left: 8px;
+    font-size: 15px;
+}
+.forecast-item{
+    margin: 12px 0;
+    padding: 12px;
+    background: rgba(30, 25, 80, 0.7);
+    border-radius: 8px;
+    border-left: 4px solid rgb(86, 98, 246);
+}
+.weather-info-container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.weather-image{
+    text-align: center;
+    margin: 15px 0;
+}
