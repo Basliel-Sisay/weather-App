@@ -32,10 +32,32 @@ const liveWeather = await findWeather(location);
 const outcome = getOutcome(liveWeather);
 if(outcome){
 const info = document.querySelector('.weatherInfo');
-info.innerHTML= '<h2>Today</h2>' + outcome.Date +'<br>'
-'<strong>Temprature</strong>: '+ outcome.temprature + '℉' + '<br>';
+info.innerHTML='<div class="weather-info-container"> <h2>Today\'s Weather</h2><div class="forecast-item">    <span class="weather-label">Date:</span> <span class="weather-value">'+ outcome.Date+ '</span> </div> <div class="forecast-item">   <span class="weather-label">Temperature:</span>    <span class="weather-value">'+outcome.temprature+'℉</span> </div> <div class="weather-image" id="weatherImage"></div> </div>';
 const forecast = document.querySelector('.forecast');
-forecast.innerHTML='<strong>Humidity</strong>: '+ outcome.humid + '<br> <strong>Feels Like</strong>: ' + outcome.feelsLike + '<br> <strong>Precipitation</strong>: ' + outcome.precip + '<br> <strong>Wind Speed</strong>: ' + outcome.windSpeed + '<br>';
-
+forecast.innerHTML='<h3>Weather Details</h3> <div class="forecast-item">  <span class="weather-label">Humidity:</span>  <span class="weather-value">'+ outcome.humid+ '%</span>  </div>  <div class="forecast-item">    <span class="weather-label">Feels Like:</span>    <span class="weather-value">'+ outcome.feelsLike +'°F</span> </div> <div class="forecast-item">    <span class="weather-label">Wind Speed:</span>    <span class="weather-value">' + outcome.windSpeed +'mph</span>   </div>    <div class="forecast-item">    <span class="weather-label">Conditions:</span>    <span class="weather-value">'+ outcome.conditions +'</span> </div> ';
+if(outcome.WeatherIcon.includes('snow')){
+    info.innerHTML +="<img src='https://cdn-icons-png.flaticon.com/512/6221/6221304.png' alt='snow picture' width= '100px' height='90px'> ";
 }
-})
+else if(outcome.WeatherIcon.includes('clear-day')){
+    info.innerHTML +="<img src='https://cdn-icons-png.flaticon.com/512/7084/7084512.png' alt='sunny' width= '100px' height='90px'> ";
+}
+else if(outcome.WeatherIcon.includes('rain')){
+    info.innerHTML +="<img src='https://cdn-icons-png.flaticon.com/512/1163/1163657.png' alt = 'rain' width= '100px' height='90px'> ";
+}
+else if(outcome.WeatherIcon.includes('wind')){
+    info.innerHTML +="<img src='https://cdn-icons-png.flaticon.com/512/966/966390.png' alt='wind weather' width= '100px' height='90px' >";
+}
+else if(outcome.WeatherIcon.includes('partly-cloudy-day')){
+    info.innerHTML +="<img src=' https://cdn-icons-png.flaticon.com/512/4834/4834559.png' alt='cloudy weather' width= '100px' height='90px'>";
+}
+else if(outcome.WeatherIcon.includes('partly-cloudy-night')){
+info.innerHTML +="<img src='https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Status-weather-clouds-night-icon.png' alt='Cloudy night' width='100px' height='90px'> ";
+}
+else{
+    console.log('other weather');
+}
+}
+else{
+    console.log("Error");
+}
+});
