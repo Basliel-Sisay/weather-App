@@ -50,6 +50,10 @@ body{
     font-size: 16px;
     border-radius: 10px;
 }
+#locationInput:focus {
+    outline: 2px solid rgb(77, 144, 254);
+    border-color: rgb(77, 144, 254);
+}
 #searchButton{
     padding: 10px 20px;
     background: rgb(24, 8, 80); 
@@ -57,7 +61,13 @@ body{
     border: none;
     cursor: pointer;
     border-radius: 10px;
+    transition: all 0.3s ease;
 } 
+#searchButton:hover{
+    background: rgb(36, 15, 120);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
 .forecast h3{
     margin-top: 20px;
     font-size: 18px;
@@ -71,8 +81,8 @@ body{
     font-size: 16px;
 }
 .weather-label{
-    font-weight: 600;
-    color: rgb(255, 255, 255);
+    font-weight: 700;
+    color: white;
     font-size: 14px;
 }
 .weather-value{
