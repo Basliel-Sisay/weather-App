@@ -32,12 +32,10 @@ const liveWeather = await findWeather(location);
 const outcome = getOutcome(liveWeather);
 if(outcome){
 const info = document.querySelector('.weatherInfo');
-info.innerHTML= '<h2>Today</h2>' + outcome.Date +'<br>';
-info.innerHTML='<strong>Temprature</strong>: '+ outcome.temprature + '℉' + '<br>';
+info.innerHTML= '<h2>Today</h2>' + outcome.Date +'<br>'
+'<strong>Temprature</strong>: '+ outcome.temprature + '℉' + '<br>';
 const forecast = document.querySelector('.forecast');
-'<strong>Humidity</strong>: '+ outcome.humid + '<br>'
-'<strong>Feels Like</strong>: ' + outcome.feelsLike + '<br>'
-'<strong>Precipitation</strong>: ' + outcome.precip + '<br>'
-'<strong>Wind Speed</strong>: ' + outcome.currentConditions.windSpeed + '<br>'
+forecast.innerHTML='<strong>Humidity</strong>: '+ outcome.humid + '<br> <strong>Feels Like</strong>: ' + outcome.feelsLike + '<br> <strong>Precipitation</strong>: ' + outcome.precip + '<br> <strong>Wind Speed</strong>: ' + outcome.windSpeed + '<br>';
+
 }
 })
