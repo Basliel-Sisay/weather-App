@@ -58,6 +58,9 @@ info.innerHTML +="<img src='https://icons.iconarchive.com/icons/oxygen-icons.org
 else{
     console.log('other weather');
 }
+const suggestion = aegisRecommendation(outcome.feelsLike, outcome.conditions);
+const message = document.querySelector("#suggestionText");
+message.innerText= "User: "+suggestion;
 }
 else{
     console.log("Error");
@@ -96,9 +99,46 @@ info.innerHTML +="<img src='https://icons.iconarchive.com/icons/oxygen-icons.org
 else{
     console.log('other weather');
 }
+const suggestion = aegisRecommendation(outcome.feelsLike, outcome.conditions);
+const message = document.querySelector("#suggestionText");
+message.innerText= "Suggestion - "+suggestion;
 }
 else{
     console.log("Error");
 }
     }
 });
+function aegisRecommendation(temp, condition) {
+    const stat = condition.toLowerCase(); 
+    if (temp < 32){
+        if (stat.includes('snow')){
+            return 'Outfit: Waterproof parka and insulated boots. Activity: Indoor strength training.';
+        }
+        return 'Outfit: Heavy parka and thermal base. Activity: Winter photography.';
+    } 
+    else if (temp >= 32 && temp < 50){
+        if (stat.includes('rain')){
+            return 'Outfit: Waterproof trench coat and umbrella. Activity: Visiting a gallery.';
+        }
+        return 'Outfit: Puffer jacket and light scarf. Activity: Brisk morning jog.';
+    }
+    else if (temp >= 51 && temp < 68){
+        if (stat.includes('rain')){
+            return 'Outfit: Windbreaker and jeans. Activity: Indoor climbing gym.';
+        }
+        return 'Outfit: Light sweater or denim jacket. Activity: Afternoon bike ride.';
+    }
+    else if (temp >= 68 && temp < 80){
+        if (stat.includes('rain') || stat.includes('storm')){
+            return 'Outfit: Breathable rain shell. Activity: Indoor basketball.';
+        }
+        return 'Outfit: T-shirt and sunglasses. Activity: Hike in the woods.';
+    }
+    else if (temp >= 80){
+        if (stat.includes('rain') || stat.includes('humid')){
+            return 'Outfit: Moisture wicking activewear. Activity: Air conditioned gym.';
+        }
+        return 'Outfit: Linen shirt and sunscreen. Activity: Beach trip or swimming.';
+    }
+    return 'Outfit: Standard seasonal attire. Activity: Explore your local surroundings.';
+}
