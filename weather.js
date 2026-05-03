@@ -25,89 +25,6 @@ function getOutcome(outcome){
         };
     }
 }
-const button = document.querySelector('#searchButton');
-const input = document.querySelector('#locationInput');
-button.addEventListener('click', async(e)=>{
-e.preventDefault();
-const location = document.querySelector('#locationInput').value;
-const liveWeather = await findWeather(location);
-const outcome = getOutcome(liveWeather);
-if(outcome){
-const info = document.querySelector('.weatherInfo');
-info.innerHTML='<div class="weather-info-container"> <h2>Today\'s Weather</h2><div class="forecast-item">    <span class="weather-label">Date:</span> <span class="weather-value">'+ outcome.Date+ '</span> </div> <div class="forecast-item">   <span class="weather-label">Temperature:</span>    <span class="weather-value">'+outcome.temprature+'℉</span> </div> <div class="weather-image" id="weatherImage"></div> </div>';
-const forecast = document.querySelector('.forecast');
-forecast.innerHTML='<h3>Weather Details</h3> <div class="forecast-item">  <span class="weather-label">Humidity:</span>  <span class="weather-value">'+ outcome.humid+ '%</span>  </div>  <div class="forecast-item">    <span class="weather-label">Feels Like:</span>    <span class="weather-value">'+ outcome.feelsLike +'°F</span> </div> <div class="forecast-item">    <span class="weather-label">Wind Speed:</span>    <span class="weather-value">' + outcome.windSpeed +'mph</span>   </div>    <div class="forecast-item">    <span class="weather-label">Conditions:</span>    <span class="weather-value">'+ outcome.conditions +'</span> </div> ';
-if(outcome.WeatherIcon.includes('snow')){
-    info.innerHTML +="<img src='https://cdn-icons-png.flaticon.com/512/6221/6221304.png' alt='snow picture' width= '100px' height='90px'> ";
-}
-else if(outcome.WeatherIcon.includes('clear-day')){
-    info.innerHTML +="<img src='https://cdn-icons-png.flaticon.com/512/7084/7084512.png' alt='sunny' width= '100px' height='90px'> ";
-}
-else if(outcome.WeatherIcon.includes('rain')){
-    info.innerHTML +="<img src='https://cdn-icons-png.flaticon.com/512/1163/1163657.png' alt = 'rain' width= '100px' height='90px'> ";
-}
-else if(outcome.WeatherIcon.includes('wind')){
-    info.innerHTML +="<img src='https://cdn-icons-png.flaticon.com/512/966/966390.png' alt='wind weather' width= '100px' height='90px' >";
-}
-else if(outcome.WeatherIcon.includes('partly-cloudy-day')){
-    info.innerHTML +="<img src=' https://cdn-icons-png.flaticon.com/512/4834/4834559.png' alt='cloudy weather' width= '100px' height='90px'>";
-}
-else if(outcome.WeatherIcon.includes('partly-cloudy-night')){
-info.innerHTML +="<img src='https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Status-weather-clouds-night-icon.png' alt='Cloudy night' width='100px' height='90px'> ";
-}
-else{
-    console.log('other weather');
-}
-const suggestion = aegisRecommendation(outcome.feelsLike, outcome.conditions);
-const message = document.querySelector("#suggestionText");
-message.innerText= "User: "+suggestion;
-}
-else{
-    console.log("Error");
-}
-});
-
-input.addEventListener('keydown', async function(e){
-    if(e.key === 'Enter'){
-        e.preventDefault();
-const location = document.querySelector('#locationInput').value;
-const liveWeather = await findWeather(location);
-const outcome = getOutcome(liveWeather);
-if(outcome){
-const info = document.querySelector('.weatherInfo');
-info.innerHTML='<div class="weather-info-container"> <h2>Today\'s Weather</h2><div class="forecast-item">    <span class="weather-label">Date:</span> <span class="weather-value">'+ outcome.Date+ '</span> </div> <div class="forecast-item">   <span class="weather-label">Temperature:</span>    <span class="weather-value">'+outcome.temprature+'℉</span> </div> <div class="weather-image" id="weatherImage"></div> </div>';
-const forecast = document.querySelector('.forecast');
-forecast.innerHTML='<h3>Weather Details</h3> <div class="forecast-item">  <span class="weather-label">Humidity:</span>  <span class="weather-value">'+ outcome.humid+ '%</span>  </div>  <div class="forecast-item">    <span class="weather-label">Feels Like:</span>    <span class="weather-value">'+ outcome.feelsLike +'°F</span> </div> <div class="forecast-item">    <span class="weather-label">Wind Speed:</span>    <span class="weather-value">' + outcome.windSpeed +'mph</span>   </div>    <div class="forecast-item">    <span class="weather-label">Conditions:</span>    <span class="weather-value">'+ outcome.conditions +'</span> </div> ';
-if(outcome.WeatherIcon.includes('snow')){
-    info.innerHTML +="<img src='https://cdn-icons-png.flaticon.com/512/6221/6221304.png' alt='snow picture' width= '100px' height='90px'> ";
-}
-else if(outcome.WeatherIcon.includes('clear-day')){
-    info.innerHTML +="<img src='https://cdn-icons-png.flaticon.com/512/7084/7084512.png' alt='sunny' width= '100px' height='90px'> ";
-}
-else if(outcome.WeatherIcon.includes('rain')){
-    info.innerHTML +="<img src='https://cdn-icons-png.flaticon.com/512/1163/1163657.png' alt = 'rain' width= '100px' height='90px'> ";
-}
-else if(outcome.WeatherIcon.includes('wind')){
-    info.innerHTML +="<img src='https://cdn-icons-png.flaticon.com/512/966/966390.png' alt='wind weather' width= '100px' height='90px' >";
-}
-else if(outcome.WeatherIcon.includes('partly-cloudy-day')){
-    info.innerHTML +="<img src=' https://cdn-icons-png.flaticon.com/512/4834/4834559.png' alt='cloudy weather' width= '100px' height='90px'>";
-}
-else if(outcome.WeatherIcon.includes('partly-cloudy-night')){
-info.innerHTML +="<img src='https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Status-weather-clouds-night-icon.png' alt='Cloudy night' width='100px' height='90px'> ";
-}
-else{
-    console.log('other weather');
-}
-const suggestion = aegisRecommendation(outcome.feelsLike, outcome.conditions);
-const message = document.querySelector("#suggestionText");
-message.innerText= "Suggestion - "+suggestion;
-}
-else{
-    console.log("Error");
-}
-    }
-});
 function aegisRecommendation(temp, condition) {
     const stat = condition.toLowerCase(); 
     if (temp < 32){
@@ -142,3 +59,56 @@ function aegisRecommendation(temp, condition) {
     }
     return 'Outfit: Standard seasonal attire. Activity: Explore your local surroundings.';
 }
+const button = document.querySelector('#searchButton');
+const input = document.querySelector('#locationInput');
+async function change(){
+    const location = document.querySelector('#locationInput').value;
+    const liveWeather = await findWeather(location);
+    const outcome = getOutcome(liveWeather);
+    if(outcome){
+    const info = document.querySelector('.weatherInfo');
+    info.innerHTML='<div class="weather-info-container"> <h2>Today\'s Weather</h2><div class="forecast-item">    <span class="weather-label">Date:</span> <span class="weather-value">'+ outcome.Date+ '</span> </div> <div class="forecast-item">   <span class="weather-label">Temperature:</span>    <span class="weather-value">'+outcome.temprature+'℉</span> </div> <div class="weather-image" id="weatherImage"></div> </div>';
+    const forecast = document.querySelector('.forecast');
+    forecast.innerHTML='<h3>Weather Details</h3> <div class="forecast-item">  <span class="weather-label">Humidity:</span>  <span class="weather-value">'+ outcome.humid+ '%</span>  </div>  <div class="forecast-item">    <span class="weather-label">Feels Like:</span>    <span class="weather-value">'+ outcome.feelsLike +'°F</span> </div> <div class="forecast-item">    <span class="weather-label">Wind Speed:</span>    <span class="weather-value">' + outcome.windSpeed +'mph</span>   </div>    <div class="forecast-item">    <span class="weather-label">Conditions:</span>    <span class="weather-value">'+ outcome.conditions +'</span> </div> ';
+        if(outcome.WeatherIcon.includes('snow')){
+            info.innerHTML +="<img src='https://i.pinimg.com/736x/98/80/d4/9880d4a3b244b691ba115efdce111744.jpg' alt='snow picture' width= '100px' height='90px'> ";
+        }
+        else if(outcome.WeatherIcon.includes('clear-day')){
+            info.innerHTML +="<img src='https://i.pinimg.com/736x/ca/d4/51/cad451790c7b4af60f6c66582a08895c.jpg' alt='sunny' width= '100px' height='90px'> ";
+        }
+        else if(outcome.WeatherIcon.includes('rain')){
+            info.innerHTML +="<img src='https://i.pinimg.com/736x/c3/13/26/c313261be7430f91a05277dde7f30acc.jpg' alt = 'rain' width= '100px' height='90px'> ";
+        }
+        else if(outcome.WeatherIcon.includes('wind')){
+            info.innerHTML +="<img src='https://i.pinimg.com/1200x/be/d7/ae/bed7ae968591ba884635664c884b6ba1.jpg' alt='wind weather' width= '100px' height='90px' >";
+        }
+        else if(outcome.WeatherIcon.includes('partly-cloudy-day')){
+            info.innerHTML +="<img src='https://i.pinimg.com/736x/e5/ed/37/e5ed371c5a80df6edee3cf442c7f3d28.jpg' alt='cloudy weather' width= '100px' height='90px'>";
+        }
+        else if(outcome.WeatherIcon.includes('partly-cloudy-night')){
+            info.innerHTML +="<img src='https://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/256/Status-weather-clouds-night-icon.png' alt='Cloudy night' width='100px' height='90px'> ";
+        }
+        else{
+            console.log('other weather');
+            info.innerHTML+="<img src='https://i.pinimg.com/1200x/6f/2d/d3/6f2dd38c42c94785f87cab82ec0b53f5.jpg' alt='defualt weather' width= '100px' height='90px' style='border-radius: 8px;'> ";
+        }
+const suggestion = aegisRecommendation(outcome.feelsLike, outcome.conditions);
+const message = document.querySelector("#suggestionText");
+message.innerText= "User: "+suggestion;
+}
+else{
+    console.log("Error");
+}
+}
+
+button.addEventListener('click', function(e){
+e.preventDefault();
+change();
+});
+input.addEventListener('keydown', function(e){
+    if(e.key === "Enter"){
+        e.preventDefault();
+        change();
+    }
+    
+});
