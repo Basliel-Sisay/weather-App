@@ -106,3 +106,26 @@ body{
     text-align: center;
     margin: 15px 0;
 }
+.suggestion-box{
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(30, 25, 80, 0.7);
+    border-left: 4px solid rgb(0, 162, 252);
+    border-radius: 8px;
+    color: white;
+}
+#suggestionTitle{
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: rgb(0, 162, 252);
+}
+#suggestionText{
+    font-size: 15px;
+    line-height: 1.5;
+    color: rgb(220, 220, 220);
+    font-style: italic;
+    margin: 0px;
+}
