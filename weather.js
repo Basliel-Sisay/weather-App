@@ -1,5 +1,5 @@
 async function findWeather(city){
-    const link =' https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + city+ '?key=VGL5YU8X29WFANELBLGESVR8V';
+    const link =config.url + city + config.api;
     const outcomeJson = await fetch(link);
     const outcome = await outcomeJson.json();
     console.log(outcome);
@@ -29,35 +29,46 @@ function aegisRecommendation(temp, condition) {
     const stat = condition.toLowerCase(); 
     if (temp < 32){
         if (stat.includes('snow')){
-            return 'Outfit: Waterproof parka and insulated boots. Activity: Indoor strength training.';
+            return `Outfit Recommendation: Waterproof parka and insulated boots.
+                    Activity: Indoor strength training`;
         }
-        return 'Outfit: Heavy parka and thermal base. Activity: Winter photography.';
+        return `Outfit Recommendation: Heavy parka and thermal base.
+                Activity: Winter photography`;
     } 
     else if (temp >= 32 && temp < 50){
         if (stat.includes('rain')){
-            return 'Outfit: Waterproof trench coat and umbrella. Activity: Visiting a gallery.';
+            return `Outfit Recommendation: Waterproof trench coat and umbrella.
+                    Activity: Visiting a gallery`;
         }
-        return 'Outfit: Puffer jacket and light scarf. Activity: Brisk morning jog.';
+        return `Outfit Recommendation: Puffer jacket and light scarf.
+                 Activity: Brisk morning jog`;
     }
     else if (temp >= 51 && temp < 68){
         if (stat.includes('rain')){
-            return 'Outfit: Windbreaker and jeans. Activity: Indoor climbing gym.';
+            return `Outfit Recommendation: Windbreaker and jeans.
+                    Activity: Indoor climbing gym`;
         }
-        return 'Outfit: Light sweater or denim jacket. Activity: Afternoon bike ride.';
+        return `Outfit Recommendation: Light sweater or denim jacket.
+                Activity: Afternoon bike ride`;
     }
     else if (temp >= 68 && temp < 80){
         if (stat.includes('rain') || stat.includes('storm')){
-            return 'Outfit: Breathable rain shell. Activity: Indoor basketball.';
+            return `Outfit Recommendation: Breathable rain shell.
+                    Activity: Indoor basketball`;
         }
-        return 'Outfit: T-shirt and sunglasses. Activity: Hike in the woods.';
+        return `Outfit Recommendation: T-shirt and sunglasses.
+                Activity: Hike in the woods`;
     }
     else if (temp >= 80){
         if (stat.includes('rain') || stat.includes('humid')){
-            return 'Outfit: Moisture wicking activewear. Activity: Air conditioned gym.';
+            return `Outfit Recommendation: Moisture wicking activewear.
+                    Activity: Air conditioned gym`;
         }
-        return 'Outfit: Linen shirt and sunscreen. Activity: Beach trip or swimming.';
+        return `Outfit Recommendation: Linen shirt and sunscreen.
+                Activity: Beach trip or swimming`;
     }
-    return 'Outfit: Standard seasonal attire. Activity: Explore your local surroundings.';
+    return `Outfit Recommendation: Standard seasonal attire.     
+            Activity: Explore your local surroundings`;
 }
 const button = document.querySelector('#searchButton');
 const input = document.querySelector('#locationInput');
@@ -94,7 +105,7 @@ async function change(){
         }
 const suggestion = aegisRecommendation(outcome.feelsLike, outcome.conditions);
 const message = document.querySelector("#suggestionText");
-message.innerText= "User: "+suggestion;
+message.innerHTML= "<h4>Suggestions</h4>"+ suggestion;
 }
 else{
     console.log("Error");
